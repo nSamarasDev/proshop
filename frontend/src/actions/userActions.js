@@ -9,6 +9,9 @@ import {
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
+    USER_UPDATE_PROFILE_SUCCESS,
+    USER_UPDATE_PROFILE_FAIL,
+    USER_UPDATE_PROFILE_REQUEST,
   } from "../constants/userConstants";
    
   import axios from "axios";
@@ -129,3 +132,39 @@ import {
       });
     }
   };
+
+  export const updateUserProfile = (user) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: USER_UPDATE_PROFILE_REQUEST, });
+
+      const { userLogin: { userInfo } } = getState()
+   
+      // Declare content type so request can be parsed as JSON
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`
+        },
+      };
+   
+      // Extract name,email and password from route
+      const { data } = await axios.put(`/api/users/profile`, user, config);
+   
+      // If successful return the payload with email and password
+      dispatch({
+        type: USER_UPDATE_PROFILE_SUCCESS,
+        payload: data,
+      });
+
+    } catch (error) {
+      dispatch({
+        type: USER_UPDATE_PROFILE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+  
