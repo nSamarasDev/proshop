@@ -60,7 +60,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       };
    
       // Extract cart contents and make request
-      const { data } = await axios.get(`/api/orders${id}`, config);
+      const { data } = await axios.get(`/api/orders/${id}`, config);
    
       // If successful return the payload and pass it down to the state
       dispatch({
