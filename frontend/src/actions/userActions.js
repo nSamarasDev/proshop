@@ -231,7 +231,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     };
 
     // Extract name,email and password from route
-    const { data } = await axios.delete(`/api/users/${id}`, config);
+    await axios.delete(`/api/users/${id}`, config);
 
     // If successful return the payload with email and password
     dispatch({
