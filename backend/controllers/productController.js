@@ -34,7 +34,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   // If the product exists ? then
   if (product) {
-    await proudct.remove();
+    await product.remove();
     res.json({ message: 'Product removed' });
   } else {
     res.status(404);

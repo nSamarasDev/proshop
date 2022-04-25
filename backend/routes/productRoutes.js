@@ -42,3 +42,20 @@ router.get(
 );
 
 export default router;
+
+// The above code is what I have that is working.
+// The code below is what brad has which is not working
+
+// import express from 'express';
+// const router = express.Router();
+// import {
+//   getProducts,
+//   getProductById,
+//   deleteProduct,
+// } from '../controllers/productController.js';
+// import { protect, admin } from '../middleware/authMiddleware';
+
+// router.route('/').get(getProducts);
+// router.route('/:id').get(getProductById).delete(protect, admin, deleteProduct);
+
+// export default router;
