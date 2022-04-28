@@ -1,4 +1,3 @@
-## ProShop is just a class
+## ProShop is a fully featured Ecommerce web application
 
-# proshop
-# proshop
+
